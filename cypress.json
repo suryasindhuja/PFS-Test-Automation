@@ -1,10 +1,10 @@
 {
-    "chromeWebSecurity":false,
-    "reporter": "cypress-mochawesome-reporter",
+    "reporter": "mochawesome",
     "reporterOptions": {
-        "reportDir": "cypress/report",
-        "charts": true,
-        "reportPageTitle": "Testing for CRUDE operation",
-        "embeddedScreenshots": true
-    }
-}
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": true,
+        "html": true,
+        "json": false,
+        "timestamp": "mmddyyyy_HHMMss"
+     }
+  }

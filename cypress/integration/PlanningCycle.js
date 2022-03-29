@@ -91,14 +91,15 @@ describe('Testing 1', function(){
             cy.get('#PC_MC_btn_Save').click();
 
             //Output
-            cy.get('.notice-header h3').then((body) => {
-            if (body.find('.notice-header h3').contains('text', 'Planning Cycle saved successfully')) {
-                cy.log("Cycle creation was successful")
-            }
-            else {
-                cy.get('.notice-header h3').should('contain.text','The provided Planning Cycle "Delete 5" already exists.');
+            cy.get('.notice-header').then(($a) => { 
+                if ($a.text().includes('successfully')) {
+                    cy.get('.notice-header').should('contain.text','Planning Cycle saved successfully')
+                } else if ($a.text().includes('Planning Cycle')) { 
+                    cy.get('.notice-header').should('contain.text','already exists.')
+                } else {
+                    cy.get('.notice-header').should('contain.text','Cycle with same cycle details already exists.')
                 }
-            })
+            })     
         }
     })   
 });
@@ -129,8 +130,7 @@ describe('Testing 1', function(){
         cy.get('#PC_MC_btn_Save').click()
         cy.get('#PC_MC_rfvName').should('contain.text','Field is mandatory')
         cy.get('#PC_MC_revNumberOfMonths').should('contain.text','Invalid input, Please enter valid integer')
-    })   
-            
+    })               
 });
 
     //Edit
@@ -161,7 +161,16 @@ describe('Testing 1', function(){
                         expect(d).to.be.gte(d1);
                     })
                 })
-                cy.get('.notice-header h3').should('contain.text','Planning Cycle updated successfully');
+                //Output
+                cy.get('.notice-header').then(($a) => { 
+                if ($a.text().includes('successfully')) {
+                    cy.get('.notice-header').should('contain.text','Planning Cycle saved successfully')
+                    } else if ($a.text().includes('Planning Cycle')) { 
+                        cy.get('.notice-header').should('contain.text','already exists.')
+                    } else {
+                        cy.get('.notice-header').should('contain.text','Cycle with same cycle details already exists.')
+                    }
+                })
             }
             
         })   
