@@ -1,0 +1,10 @@
+{
+    "chromeWebSecurity":false,
+    "reporter": "cypress-mochawesome-reporter",
+    "reporterOptions": {
+        "reportDir": "cypress/report",
+        "charts": true,
+        "reportPageTitle": "Testing for CRUDE operation",
+        "embeddedScreenshots": true
+    }
+}
