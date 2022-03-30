@@ -5,7 +5,7 @@ describe('Testing 1', function(){
     const sheetName='login';
 
     cy.task('generateJSONFromExcel', { excelFilePath, sheetName: 'login' }).then((credential) => {
-        cy.visit(credential[0].url);
+        cy.visit('http://testapp.corporate.com/PFS_4.7.2_PL/Account/Login.aspx);
         cy.get('#MC_LoginUser_UserName').clear().type(credential[0].username);
         cy.get('#MC_LoginUser_Password').clear().type(credential[0].password);
         cy.get('#MC_LoginUser_LoginButton').click();
