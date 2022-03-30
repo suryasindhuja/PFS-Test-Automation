@@ -16,4 +16,4 @@ jobs:
     - name: Cypress.io
       uses: cypress-io/github-action@v2.9.7
       with:
-        start: npm start
+        start: npm run cypress:open
