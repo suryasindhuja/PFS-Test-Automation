@@ -1,19 +1,15 @@
 name: PFS Test Automation
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  build:
-
+  cypress-run:
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3.0.0
-    - name: Cypress.io
-      uses: cypress-io/github-action@v2.9.7
-      with:
-        start: npm run cypress:open
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run cypress:open
